@@ -1,0 +1,58 @@
+/* components/SignupForm.module.css */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+  background: white;
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.myInput {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.myInput:focus {
+  border-color: #0056b3;
+}
+
+.myButton {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  color: white;
+  background-color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.myButton.buttonHover:hover {
+  background-color: #003d82;
+}
+
+@media (max-width: 768px) {
+  .responsiveTitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsiveTitle {
+    font-size: 2.5rem;
+  }
+
+  .responsiveDescription {
+    font-size: 1.2rem;
+    width: 80%;
+  }
+}
