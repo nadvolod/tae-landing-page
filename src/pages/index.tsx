@@ -1,7 +1,5 @@
 import Head from "next/head";
-import React from "react";
 import HeroSection from "../components/HeroSection"; // Adjust path as necessary
-import SignupForm from "../components/SignupForm"; // Adjust path as necessary
 
 export default function Home() {
   return (
@@ -17,7 +15,6 @@ export default function Home() {
 
       <main>
         <HeroSection />
-        <SignupForm />
       </main>
 
       <footer>{/* Footer content */}</footer>

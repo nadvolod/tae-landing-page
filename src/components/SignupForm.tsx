@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
-import styles from "./SignupForm.module.css"; // Assuming CSS modules
+import { useState } from "react";
+import styles from "./SignupForm.module.css";
 
-const SignupForm: React.FC = () => {
+function SignupForm() {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post("/api/subscribe", { email });
@@ -22,11 +22,13 @@ const SignupForm: React.FC = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter your email"
-        required
+        className={styles.emailInput}
       />
-      <button type="submit">Subscribe</button>
+      <button type="submit" className={styles.subscribeButton}>
+        Subscribe
+      </button>
     </form>
   );
-};
+}
 
 export default SignupForm;
