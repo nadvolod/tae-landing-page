@@ -16,6 +16,7 @@
     "react-hook-form": "^7.51.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.43.1",
     "@testing-library/react": "^15.0.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^20",
