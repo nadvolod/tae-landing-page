@@ -1,5 +1,6 @@
 import Head from "next/head";
 import HeroSection from "../components/HeroSection"; // Adjust path as necessary
+import "../styles/index.css";
 
 export default function Home() {
   return (
