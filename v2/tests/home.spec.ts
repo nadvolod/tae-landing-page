@@ -6,31 +6,46 @@ test.describe("Home Page Tests", () => {
   });
 
   test("Check for main elements visibility", async ({ page }) => {
-    // Check if the top banner text is visible
-    await expect(page.locator("text=Get started by editing")).toBeVisible();
+    // Check if the banner text is visible and contains correct text
+    const bannerText = page.locator('[data-testid="banner-text"]');
+    await expect(bannerText).toBeVisible();
+    await expect(bannerText).toContainText(
+      "Get started by editing src/app/page.tsx"
+    );
 
-    // Check if the Vercel link at the bottom is correctly attributed
-    const vercelLink = page.locator("a >> text=By Vercel");
-    await expect(vercelLink).toBeVisible();
-    await expect(vercelLink).toHaveAttribute(
+    // Check Vercel logo link visibility and attributes
+    const vercelLogoLink = page.locator('[data-testid="vercel-logo-link"]');
+    await expect(vercelLogoLink).toBeVisible();
+    await expect(vercelLogoLink).toHaveAttribute(
       "href",
       "https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
     );
-    await expect(vercelLink).toHaveAttribute("target", "_blank");
 
-    // Check visibility of Next.js logo
-    const nextJsLogo = page.locator('img[alt="Next.js Logo"]');
+    // Check Vercel logo image visibility
+    const vercelLogo = page.locator('[data-testid="vercel-logo"]');
+    await expect(vercelLogo).toBeVisible();
+
+    // Check Next.js logo visibility
+    const nextJsLogo = page.locator('[data-testid="nextjs-logo"]');
     await expect(nextJsLogo).toBeVisible();
   });
 
-  test("Ensure navigation links work", async ({ page }) => {
-    // Ensure that the Docs link is interactive and navigates correctly
-    const docsLink = page.locator("text=Docs");
-    await expect(docsLink).toBeVisible();
-    await docsLink.click();
-    // Use a response check or URL check here if possible
-  });
+  test("Navigation Links Functionality", async ({ page }) => {
+    // Testing each navigation link for visibility and correct URL
+    const links = [
+      { testid: "docs-link", expectedHref: "https://nextjs.org/docs" },
+      { testid: "learn-link", expectedHref: "https://nextjs.org/learn" },
+      {
+        testid: "templates-link",
+        expectedHref: "https://vercel.com/templates?framework=next.js",
+      },
+      { testid: "deploy-link", expectedHref: "https://vercel.com/new" },
+    ];
 
-  // Additional tests can include functionality for hovering, clicking,
-  // and checking response actions or routing.
+    for (const link of links) {
+      const navLink = page.locator(`[data-testid="${link.testid}"]`);
+      await expect(navLink).toBeVisible();
+      await expect(navLink).toHaveAttribute("href", link.expectedHref);
+    }
+  });
 });
